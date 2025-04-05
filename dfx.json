@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "dman_backend": {
+      "main": "src/dman_backend/main.mo",
+      "type": "motoko"
+    },
+    "dman_frontend": {
+      "dependencies": [
+        "dman_backend"
+      ],
+      "source": [
+        "src/dman_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "dman_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
