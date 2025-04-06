@@ -2,9 +2,6 @@ import Principal "mo:base/Principal";
 import HashMap "mo:base/HashMap";
 import Iter "mo:base/Iter";
 import Debug "mo:base/Debug";
-//this is my command line's principal id -> 32dt7-mq65y-jfjsd-xglde-w2mth-tmvxc-rmc5p-ttg4c-44obm-aa6fs-vae
-//this is my canister's principal id -> c2lt4-zmaaa-aaaaa-qaaiq-cai
-//this is the principal id of the interface -> 2vxsx-fae
 
 actor Token{
     
