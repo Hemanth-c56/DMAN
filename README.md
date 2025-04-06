@@ -55,6 +55,14 @@ To run this project locally after cloning:
     dfx deploy
     npm start
     ```
----
+
 
 > 📝 **Important:** Without deploying to the live chain, Internet Identity won't issue real principal IDs, and users won’t be able to claim tokens properly or use identity-based features.
+
+---
+
+## 🎉 Wrap-Up
+
+This was a small but super fun project to explore how tokens work on the ICP blockchain using Motoko. Learned a bunch along the way — hope it helps someone else out too!
+
+> Feel free to check it out, play around, or even build on top of it 😄
