@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { dman_backend } from "../../declarations/dman_backend";
+import { dman_backend, createActor, canisterId } from "../../declarations/dman_backend";
 import { Principal } from "@dfinity/principal";
+import { AuthClient } from "@dfinity/auth-client";
 
 function Transfer() {
     
@@ -11,7 +12,18 @@ function Transfer() {
   async function handleClick() {
     const principal = Principal.fromText(toPrincipalId);
     const amountToTransfer = Number(amount);
-    const result = await dman_backend.transfer(principal, amountToTransfer);
+
+    const authClient = await AuthClient.create();
+    const identity = await authClient.getIdentity();
+
+    const authenticatedCanister = createActor(canisterId, {
+      agentOptions: {
+        identity
+      }
+    })
+
+    const result = await authenticatedCanister.transfer(principal, amountToTransfer);
+
     setFeedback(result);
     setToPrincipalId("");
     setAmount("");

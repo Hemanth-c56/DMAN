@@ -1,13 +1,27 @@
 import React, { useState } from "react";
-import { dman_backend } from "../../declarations/dman_backend";
+import { dman_backend, canisterId, createActor } from "../../declarations/dman_backend";
+import { AuthClient } from "@dfinity/auth-client";
 
-function Faucet() {
+function Faucet(props) {
 
   const [isDissabled, setIsDissabled] = useState(false);
+  const [text, setText] = useState("Gimme gimme");
 
   async function handleClick(event) {
     setIsDissabled(true);
-    await dman_backend.payOut();
+
+    const authClient = await AuthClient.create();
+    const identity = await authClient.getIdentity();
+
+    const authenticatedCanister = createActor(canisterId, {
+      agentOptions: {
+        identity,
+      }
+    });
+
+    const result = await authenticatedCanister.payOut();
+
+    setText(result);
   }
 
   return (
@@ -18,10 +32,10 @@ function Faucet() {
         </span>
         Faucet
       </h2>
-      <label>Get your free DHemanth tokens here! Claim 100 DMAN coins to your account.</label>
+      <label>Claim your free 100 DMAN tokens into your {props.userPrincipal}.</label>
       <p className="trade-buttons">
         <button disabled={isDissabled} id="btn-payout" onClick={handleClick}>
-          Gimme gimme
+          {text}
         </button>
       </p>
     </div>

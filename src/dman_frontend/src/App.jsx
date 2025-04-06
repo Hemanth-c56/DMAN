@@ -4,12 +4,12 @@ import Faucet from "./Faucet.jsx";
 import Balance from "./Balance.jsx";
 import Transfer from "./Transfer.jsx";
 
-function App() {
+function App(props) {
 
   return (
     <div id="screen">
       <Header />
-      <Faucet />
+      <Faucet userPrincipal={props.loggedInPrincipal}/>
       <Balance />
       <Transfer />
     </div>

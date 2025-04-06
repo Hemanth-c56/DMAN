@@ -6,9 +6,9 @@ function Header() {
       <div className="blue window" id="logo">
         <h1>
           <span role="img" aria-label="tap emoji">
-            💎
-          </span>
-          DSurv
+            🏦
+          </span>        
+            Decentralized Vault
         </h1>
       </div>
     </header>
